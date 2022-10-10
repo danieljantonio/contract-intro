@@ -1,5 +1,4 @@
-import 'hardhat';
-import { ethers } from 'ethers';
+import { ethers } from 'hardhat';
 
 const main = async () => {
 	// Set up providers
