@@ -1,13 +1,24 @@
 import { ethers } from 'hardhat';
 import { expect } from 'chai';
+import { Contract } from 'ethers';
 
 describe('Greeter', function () {
-	it("Should return the new greeting once it's changed", async function () {
+	let greeter: Contract;
+	beforeEach(async () => {
 		const Greeter = await ethers.getContractFactory('Greeter');
-		const greeter = await Greeter.deploy('Hello, world!');
+		greeter = await Greeter.deploy('Hello, world!');
 		await greeter.deployed();
+	});
 
+	it('Should revert if the contract is not unlocked', async function () {
+		await expect(greeter.setGreeting('Hola, mundo!')).to.be.reverted;
+	});
+
+	it("Should return the new greeting once it's changed (and it's unlocked)", async function () {
 		expect(await greeter.greet()).to.equal('Hello, world!');
+
+		const unlockTx = await greeter.toggleUnlocked();
+		await unlockTx.wait();
 
 		const setGreetingTx = await greeter.setGreeting('Hola, mundo!');
 
