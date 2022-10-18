@@ -1,14 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
-import "hardhat/console.sol";
-
 contract Greeter {
 	string private greeting;
 	bool public unlocked = false;
 
 	constructor(string memory _greeting) {
-		console.log("Deploying a Greeter with greeting:", _greeting);
 		greeting = _greeting;
 	}
 
@@ -18,7 +15,6 @@ contract Greeter {
 
 	function setGreeting(string memory _greeting) public {
 		require(unlocked, "Sorry, this is locked");
-		console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
 		greeting = _greeting;
 	}
 

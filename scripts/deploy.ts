@@ -17,7 +17,7 @@ async function deployLock() {
 
 async function deployGreeter() {
 	const Greeter = await ethers.getContractFactory('Greeter');
-	const greeter = await Greeter.deploy('Hello, Hardhat!');
+	const greeter = await Greeter.deploy('Hello, Goerli!');
 
 	await greeter.deployed();
 
