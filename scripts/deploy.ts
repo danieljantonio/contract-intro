@@ -24,6 +24,14 @@ async function deployGreeter() {
 	console.log('Greeter deployed to:', greeter.address);
 }
 
+async function deployCounter() {
+	const Counter = await ethers.getContractFactory('Counter');
+	const counter = await Counter.deploy(10);
+	await counter.deployed();
+
+	console.log('Counter deployed to:', counter.address);
+}
+
 async function main() {
 	deployGreeter();
 }

@@ -4,7 +4,7 @@ import 'dotenv/config';
 
 const config: HardhatUserConfig = {
 	solidity: '0.8.17',
-	defaultNetwork: 'localhost',
+	// defaultNetwork: 'localhost',
 	networks: {
 		goerli: {
 			url: `https://eth-goerli.g.alchemy.com/v2/${process.env.ALCHEMY_KEY}`,
